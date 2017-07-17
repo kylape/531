@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 COLUMN_WIDTH = 12
 SEPARATOR = "+%s+" % "+".join("-" * COLUMN_WIDTH for i in range(8))
@@ -26,10 +26,10 @@ ASSISTANCE = (
 )
 
 main_lifts = ("press", "deadlift", "bench", "squat")
-assistance_lifts = ("row", "front squat", "dips", "shrug")
+assistance_lifts = ("shrug", "front squat", "dips", "row")
 
 main_maxes = [m * WORKING_MAX_PCT for m in (130, 275, 200, 250)]
-assistance_maxes = [m * WORKING_MAX_PCT for m in (175, 150, 35, 175)]
+assistance_maxes = [m * WORKING_MAX_PCT for m in (175, 165, 35, 160)]
 
 
 def format_row(data):
@@ -54,9 +54,11 @@ for i, week in enumerate(PROGRAM):
     print(SEPARATOR)
     print(format_row(lift.upper() for lift in main_lifts + assistance_lifts))
     print(SEPARATOR)
-    for pct_max, reps in PROGRAM[i]:
-        sets = [format_set(w * pct_max, reps) for w in main_maxes]
-        sets.extend(format_set(w * pct_max, reps) for w in assistance_maxes)
+    for program, assistance in zip(PROGRAM[i], ASSISTANCE[i]):
+        prog_pct_max, prog_reps = program
+        asst_pct_max, asst_reps = assistance
+        sets = [format_set(w * prog_pct_max, prog_reps) for w in main_maxes]
+        sets.extend(format_set(w * asst_pct_max, asst_reps) for w in assistance_maxes)
         print(format_row(sets))
     for pct_max, reps in BBB_SETS[i]:
         sets = [format_set(w * pct_max, reps) for w in main_maxes]
