@@ -30,7 +30,7 @@ main_lifts = ("press", "deadlift", "bench", "squat")
 assistance_lifts = ("shrug", "front squat", "dips", "row")
 
 main_maxes = [m * WORKING_MAX_PCT for m in (130, 275, 200, 250)]
-assistance_maxes = [m * WORKING_MAX_PCT for m in (175, 165, 35, 160)]
+assistance_maxes = [m * WORKING_MAX_PCT for m in (195, 200, 35, 160)]
 
 
 def format_row(data):
