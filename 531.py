@@ -29,8 +29,12 @@ ASSISTANCE = (
 main_lifts = ("press", "deadlift", "bench", "squat")
 assistance_lifts = ("shrug", "front squat", "dips", "row")
 
-main_maxes = [m * WORKING_MAX_PCT for m in (130, 275, 200, 250)]
-assistance_maxes = [m * WORKING_MAX_PCT for m in (195, 200, 35, 160)]
+with open("maxes.conf") as fp:
+    max_config = {lift.strip(): int(weight.strip())
+                  for lift, weight in (l.split("=") for l in fp.readlines())}
+
+main_maxes = [max_config[lift] * WORKING_MAX_PCT for lift in main_lifts]
+assistance_maxes = [max_config[lift] * WORKING_MAX_PCT for lift in assistance_lifts]
 
 
 def format_row(data):
