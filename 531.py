@@ -63,7 +63,7 @@ for i, week in enumerate(PROGRAM):
         print(format_row(sets))
     for pct_max, reps in BBB_SETS[i]:
         sets = [format_set(w * pct_max, reps) for w in main_maxes]
-        sets.extend(" " * 12 for i in range(4))
+        sets.extend(" " * COLUMN_WIDTH for i in range(4))
         print(format_row(sets))
     print(SEPARATOR)
     print()
