@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import itertools
 
 COLUMN_WIDTH = 12
 SEPARATOR = "+%s+" % "+".join("-" * COLUMN_WIDTH for i in range(8))
@@ -66,3 +67,9 @@ for i, week in enumerate(PROGRAM):
         print(format_row(sets))
     print(SEPARATOR)
     print()
+
+print("Current lift maxes")
+lift_col_size = max(map(len, itertools.chain(main_lifts, assistance_lifts)))
+for lifts, mxs in ((main_lifts, main_maxes), (assistance_lifts, assistance_maxes)):
+    for lift, mx in zip(lifts, mxs):
+        print("%s %s" % (lift.ljust(lift_col_size), round(mx * 1.11)))
