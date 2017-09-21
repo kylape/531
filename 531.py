@@ -30,7 +30,7 @@ main_lifts = ("press", "deadlift", "bench", "squat")
 assistance_lifts = ("shrug", "front squat", "dips", "row")
 
 with open("maxes.conf") as fp:
-    max_config = {lift.strip(): int(weight.strip())
+    max_config = {lift.strip(): float(weight.strip())
                   for lift, weight in (l.split("=") for l in fp.readlines())}
 
 main_maxes = [max_config[lift] * WORKING_MAX_PCT for lift in main_lifts]
@@ -76,4 +76,4 @@ print("Current lift maxes")
 lift_col_size = max(map(len, itertools.chain(main_lifts, assistance_lifts)))
 for lifts, mxs in ((main_lifts, main_maxes), (assistance_lifts, assistance_maxes)):
     for lift, mx in zip(lifts, mxs):
-        print("%s %s" % (lift.ljust(lift_col_size), round(mx * 1.11)))
+        print("%s %s" % (lift.ljust(lift_col_size), round_weight(mx * 1.11)))
