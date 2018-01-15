@@ -17,9 +17,7 @@ PROGRAM = (
     ((0.40, 5), (0.50, 5), (0.60, 5))
 )
 
-BBB_SETS = [[(0.55, 10) for i in range(5)] for i in range(3)]
-BBB_SETS.append([(0.45, 8) for i in range(3)])
-
+BBB_SETS = [[(0.55, 10) for i in range(5)] for i in range(4)]
 
 ASSISTANCE = (
     ((0.50, 10), (0.60, 10), (0.70, 10)),
