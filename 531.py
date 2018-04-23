@@ -18,6 +18,7 @@ PROGRAM = (
 )
 
 BBB_SETS = [[(0.55, 10) for i in range(5)] for i in range(4)]
+FSL_SETS = [[(i, 5) for k in range(5)] for i in (0.65, 0.70, 0.75, 0.40)]
 
 ASSISTANCE = (
     ((0.50, 10), (0.60, 10), (0.70, 10)),
@@ -65,7 +66,7 @@ for i, week in enumerate(PROGRAM):
         sets = [format_set(w * prog_pct_max, prog_reps) for w in main_maxes]
         sets.extend(format_set(w * asst_pct_max, asst_reps) for w in assistance_maxes)
         print(format_row(sets))
-    for pct_max, reps in BBB_SETS[i]:
+    for pct_max, reps in FSL_SETS[i]:
         sets = [format_set(w * pct_max, reps) for w in main_maxes]
         sets.extend(" " * COLUMN_WIDTH for i in range(4))
         print(format_row(sets))
