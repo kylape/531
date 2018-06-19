@@ -80,7 +80,7 @@ def format_set(weight, reps):
 
 def parse_config():
     config = configparser.ConfigParser()
-    config.read("maxes.conf")
+    config.read("lifts.ini")
     lifts = OrderedDict()
 
     for lift in (l.strip() for l in config["lifts"]):
