@@ -1,8 +1,8 @@
 # 5/3/1 Program Calculator
 
-Print calculations for each set for an entire 5/3/1 cycle.
+Command-line interface to print calculations for a 5/3/1 cycle.
 
-Output for the first week week using BBB as a supplemental program:
+Example output for the first week week using BBB as a supplemental program:
 
 ```
                         Week 1
@@ -42,11 +42,14 @@ Accessory exercises can be added as well:
 Configuration is managed from within `lifts.ini`.  There are three sections:
 
 ### `training_max_pct`
-This is the multiplier used to calculate your training max.  If you want the same training max percentage to be applied to all lifts, only add a `default` key, e.g.:
+This is the multiplier used to calculate your training max.  If you want the
+same training max percentage to be applied to all lifts, only add a `default`
+key, e.g.:
 
     default=0.9
 
-If you want to customize the training max for a particular lift, add a value for that lift:
+This sets the training max to 90%.  If you want to customize the training max
+for a particular lift, add a value for that lift:
 
     press=0.85
 
@@ -56,11 +59,14 @@ Define the real 1RM for each of your lifts here.  Example:
     press=150
 
 ### `lifts`
-Define all the lifts or exercises to include in your current cycle.  The key is the name of the lift, and the value is the program(s) to apply.  Example:
+Define all the lifts or exercises to include in your current cycle.  The key is
+the name of the lift, and the value is the program(s) to apply.  Example:
 
     press=five_three_one,boring_but_big
 
-This will add the press using the typical 5/3/1 program appended with the supplemental BBB program.  Each lift needs to have its own program listed in this section, e.g.:
+This will add the press using the typical 5/3/1 program appended with the
+supplemental BBB program.  Each lift needs to have its own program listed in
+this section, e.g.:
 
     press=five_three_one,boring_but_big
     deadlift=five_three_one,boring_but_big
@@ -75,7 +81,8 @@ The following programs are currently available:
 - assistance
 - training_max_test
 
-More can be added by creating a Python function with the desired name of the program as the function name in the python script.
+More can be added by creating a Python function with the desired name of the
+program as the function name in the python script.
 
 ## Execution
 
