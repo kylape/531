@@ -28,7 +28,7 @@ def first_set_last():
     return [[(i, 5) for k in range(5)] for i in (0.65, 0.70, 0.75, 0.40)]
 
 
-def assistance():
+def accessory():
     return (
         ((0.50, 10), (0.60, 10), (0.70, 10)),
         ((0.60, 8), (0.70, 8), (0.80, 6)),
