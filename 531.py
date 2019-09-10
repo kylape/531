@@ -30,7 +30,7 @@ def accessory():
 
 
 def boring_but_big():
-    return [[(0.55, 10) for i in range(5)] for i in range(4)]
+    return [[(0.60, 10) for i in range(5)] for i in range(4)]
 
 
 def first_set_last():
