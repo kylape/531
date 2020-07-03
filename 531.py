@@ -117,15 +117,23 @@ def parse_config():
     return lifts, maxes, training_maxes
 
 
+def print_week(table, week):
+    SEP = separator(len(table[0]))
+    print(("Week %d" % (week + 1)).center(len(SEP)))
+    print(SEP)
+    print(format_row(i.upper() for i in table[0]))
+    print(SEP)
+    for row in table[1:]:
+        print(format_row(row))
+    print(SEP)
+    print()
+
 def print_plan(lifts, maxes):
     programs = set(chain.from_iterable(lifts.values()))
     week_cnt = max(len(get_program(p)) for p in programs)
-    SEP = separator(len(lifts))
     for week in range(week_cnt):
-        print(("Week %d" % (week + 1)).center(len(SEP)))
-        print(SEP)
-        print(format_row(lift.upper() for lift in lifts))
-        print(SEP)
+        table = []
+        table.append(lifts)
         lifts_sets = []
         for lift, programs in lifts.items():
             lift_mx = maxes[lift]
@@ -135,9 +143,8 @@ def print_plan(lifts, maxes):
             lifts_sets.append(lift_sets)
         fill_out_lifts(lifts_sets)
         for row in zip(*lifts_sets):
-            print(format_row(row))
-        print(SEP)
-        print()
+            table.append(row)
+        print_week(table, week)
 
 
 def print_maxes(maxes, training_maxes):
