@@ -27,6 +27,13 @@ def coffinworm():
         ((0.65, 5), (0.75, 5), (0.85, 5), (0.85, 5), (0.85, 5))
     )
 
+def coffinworm_supp():
+    return (
+        ((0.70, 5), (0.70, 5), (0.70, 5), (0.70, 5)),
+        ((0.70, 5), (0.70, 5), (0.70, 5), (0.70, 5)),
+        ((0.00, 5), (0.00, 5), (0.00, 5), (0.00, 5))
+    )
+
 
 def accessory():
     return (
@@ -131,19 +138,26 @@ def print_week(table, week):
 def print_plan(lifts, maxes):
     programs = set(chain.from_iterable(lifts.values()))
     week_cnt = max(len(get_program(p)) for p in programs)
+
     for week in range(week_cnt):
         table = []
         table.append(lifts)
         lifts_sets = []
+
         for lift, programs in lifts.items():
             lift_mx = maxes[lift]
             lift_sets = []
+
             for program in (get_program(p)[week] for p in programs):
                 lift_sets.extend(format_set(lift_mx * pct, rep) for pct, rep in program)
+
             lifts_sets.append(lift_sets)
+
         fill_out_lifts(lifts_sets)
+
         for row in zip(*lifts_sets):
             table.append(row)
+
         print_week(table, week)
 
 
