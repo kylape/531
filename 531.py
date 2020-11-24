@@ -98,7 +98,9 @@ def fill_out_lifts(lifts):
 
 
 def format_set(weight, reps):
+    # print(weight)
     final_weight = max([round_weight(weight), 45.0])
+    # print(final_weight)
     return "%s x %s" % (str("%.1f" % final_weight).rjust(5), str(reps).rjust(2))
 
 
